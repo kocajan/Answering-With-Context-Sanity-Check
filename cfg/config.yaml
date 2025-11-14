@@ -1,0 +1,77 @@
+search_results:
+  num_results: 5
+  timeout: 8
+
+summarization:
+  text_length_limit: 5000
+
+use_cloud: False
+
+system_prompts:
+  query_generation:
+    local: |
+      Convert the user question into a concise search query.
+      No punctuation at the end. No explanation. Output only the query.
+      Question: {question}
+    cloud: |
+      Convert the user question into a concise search query.
+      No punctuation at the end. No explanation. Output only the query.
+      Question: {question}
+  summarization:
+    local: |
+      Summarize the following text into concise factual bullet points.
+      Rules:
+      - Output ONLY bullet points.
+      - Do NOT add any title, introduction, explanation, or concluding sentence.
+      - The first character of the output must be a bullet point.
+      
+      Text:
+      {text}
+    cloud: |
+      Summarize the following text into concise factual bullet points.
+      Rules:
+      - Output ONLY bullet points.
+      - Do NOT add any title, introduction, explanation, or concluding sentence.
+      - The first character of the output must be a bullet point.
+
+      Text:
+      {text}
+  answer_generation:
+    local: |
+      You will answer in exactly two lines.
+      Line 1: 'Context sufficiency: Sufficient' OR 'Context sufficiency: Insufficient'.
+      Line 2 rules:
+      - If sufficient: Answer the question in one short factual sentence.
+      - If insufficient: Say: 'The context does not contain the required information.'
+
+      Critical rule:
+      You must treat the context as the ONLY source of truth.
+      If the answer to the question is not explicitly stated in the context,
+      you MUST output 'Context sufficiency: Insufficient'.
+      Do not guess. Do not infer. Do not rely on general knowledge.
+
+      Context:
+      {context}
+      
+      Question: {question}
+      
+      Begin:
+    cloud: |
+      You will answer in exactly two lines.
+      Line 1: 'Context sufficiency: Sufficient' OR 'Context sufficiency: Insufficient'.
+      Line 2 rules:
+      - If sufficient: Answer the question in one short factual sentence.
+      - If insufficient: Say: 'The context does not contain the required information.'
+
+      Critical rule:
+      You must treat the context as the ONLY source of truth.
+      If the answer to the question is not explicitly stated in the context,
+      you MUST output 'Context sufficiency: Insufficient'.
+      Do not guess. Do not infer. Do not rely on general knowledge.
+
+      Context:
+      {context}
+      
+      Question: {question}
+      
+      Begin:
