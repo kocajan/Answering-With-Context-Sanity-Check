@@ -7,6 +7,13 @@ summarization:
 
 use_cloud: False
 
+# TODO: Before using, uncomment and fill in the API keys and Custom Search Engine ID.
+# api_keys:
+#   gemini_api_key: "..."
+#   google_search_api_key: "..."
+
+# custom_search_engine_id: "..."
+
 system_prompts:
   query_generation:
     local: |
